@@ -1,0 +1,82 @@
+// Policy for Code Deploy (AWSCodeDeployRole)
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "autoscaling:CompleteLifecycleAction",
+	 "autoscaling:DeleteLifecycleHook",
+	 "autoscaling:DescribeAutoScalingGroups",
+	 "autoscaling:DescribeLifecycleHooks",
+	 "autoscaling:PutLifecycleHook",
+	 "autoscaling:RecordLifecycleActionHeartbeat",
+	 "autoscaling:CreateAutoScalingGroup",
+	 "autoscaling:UpdateAutoScalingGroup",
+	 "autoscaling:EnableMetricsCollection",
+	 "autoscaling:DescribePolicies",
+	 "autoscaling:DescribeScheduledActions",
+	 "autoscaling:DescribeNotificationConfigurations",
+	 "autoscaling:SuspendProcesses",
+	 "autoscaling:ResumeProcesses",
+	 "autoscaling:AttachLoadBalancers",
+	 "autoscaling:AttachLoadBalancerTargetGroups",
+	 "autoscaling:PutScalingPolicy",
+	 "autoscaling:PutScheduledUpdateGroupAction",
+	 "autoscaling:PutNotificationConfiguration",
+	 "autoscaling:PutWarmPool",
+	 "autoscaling:DescribeScalingActivities",
+	 "autoscaling:DeleteAutoScalingGroup",
+	 "ec2:DescribeInstances",
+	 "ec2:DescribeInstanceStatus",
+	 "ec2:TerminateInstances",
+	 "tag:GetResources",
+	 "sns:Publish",
+	 "cloudwatch:DescribeAlarms",
+	 "cloudwatch:PutMetricAlarm",
+	 "elasticloadbalancing:DescribeLoadBalancers",
+	 "elasticloadbalancing:DescribeInstanceHealth",
+	 "elasticloadbalancing:RegisterInstancesWithLoadBalancer",
+	 "elasticloadbalancing:DeregisterInstancesFromLoadBalancer",
+	 "elasticloadbalancing:DescribeTargetGroups",
+	 "elasticloadbalancing:DescribeTargetHealth",
+	 "elasticloadbalancing:RegisterTargets",
+	 "elasticloadbalancing:DeregisterTargets"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    }
+  ]
+}
+
+// Policy Trust for Code Deploy
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": [
+          "codedeploy.us-east-1.amazonaws.com"
+        ]
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
+
+// Policy for EC2 Instance Role (AmazonEC2RoleforAWSCodeDeploy)
+{ 
+    "Version": "2012-10-17", 
+    "Statement": [   
+      {     
+          "Action": [       
+              "s3:GetObject",
+              "s3:GetObjectVersion",
+              "s3:ListBucket"   
+          ],     
+          "Effect": "Allow",     
+          "Resource": "*"   
+      } 
+    ]
+}
