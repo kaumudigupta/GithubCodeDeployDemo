@@ -6,7 +6,7 @@
 3. Your application code (html file here)
 ---
 
-## You can refer to this blog on medium: 
+## You can refer to this blog on medium: [Cloud and Chill blog](https://cloudandchill.medium.com/deploy-with-aws-codedeploy-from-github-b31a81da5acd)
 
 
 ---
